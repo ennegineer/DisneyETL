@@ -20,17 +20,24 @@ The two sets of data were extracted, transformed, and loaded into a relational d
  After all other filtering and changes were made, both dataframe column names were replaced with all lowercase names to match our PostgreSQL database column names in each table.
 
 **Load**:
-In PgAdmin, we created our database, Disneyland_DB, and two tables: reviews and park_data. (See .sql file to view table setup.) After ensuring that the column names matched between our Python notebook and the database, we used sqlAlchemy to connect to our local database, and psycopg2 to import each dataframe into its respective table, then read the data with a simple select statement to ensure the data was imported properly.
+
+In PgAdmin, we created our database, Disneyland_db, and two tables: reviews and park_data. (See .sql file to view table setup.) After ensuring that the column names matched between our Python notebook and the database, we used sqlAlchemy to connect to our local database, and psycopg2 to import each dataframe into its respective table, then read the data with a simple select statement to ensure the data was imported properly.
 
 View the ETL mapping document to see details on the final database and tables.
 
 **Analyze**:
+
 With both datasets in one notebook as dataframes (see ANALYZE file), we grouped by month/year for each dataset to get an average of crowd level by month, and average review rating by month. We then concatenated these to plot them together by date to look for correlations.
 
 
 ### Findings
 We chose this topic because Disneyland is a very well-known place worldwide, and we recognize that a lot of data can be found on the parks. We have tried through these datasets to find some informative insights about Disneyland, extract some conclusions from Disneyland reviews and make a sentiment analysis.
 
-Gives relevant and succinct description of findings (2–3 sentences)
+Looking at the reviews data, we see that 63.5% of all Disneyland California reviews in our date range are 5 star reviews. This is expected, as Disneyland is the *Happiest Place on Earth*. 
 
+Because the reviews dataset only gave us the month and year of each review, we had to group the data by month in both datasets to be able to compare. In doing this, we found no correlation between the average crowd level each month and the average review rating for the same month. We expected this outcome, because with high and low crowd levels averaged, and high and low reviews averaged, it would be hard to really see what happens each day and how crowds may have affected moods (and therefore, reviews). 
 
+#### Next Steps
+To take this analysis a step further, we would need to get Disneyland reviews that include the full date, not just month/year. Perhaps we could do this by scraping directly from Trip Advisor's website.
+
+----
